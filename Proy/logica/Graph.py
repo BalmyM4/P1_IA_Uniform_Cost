@@ -4,7 +4,7 @@ import networkx as nx
 def crearGraph():
     
     # Leer el JSON
-    with open("..\\recursos\\Romania.json", "r") as archivo:
+    with open("recursos\\Romania.json", "r") as archivo:
         data = json.load(archivo)
 
     # Crear el grafo con networkx
@@ -12,7 +12,7 @@ def crearGraph():
 
     # Agregar nodos con atributos
     for nodo in data["nodes"]:
-        G.add_node(nodo["id"], color=nodo["color"])
+        G.add_node(nodo["id"])
 
     # Agregar aristas con peso
     for enlace in data["links"]:

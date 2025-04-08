@@ -3,3 +3,7 @@
 # Para activar el proyecto:
 
 'venv\Scripts\activate'
+
+
+# Para desactivar
+deactivate
