@@ -1,0 +1,27 @@
+Resultado del algoritmo Uniform Cost Search:
+
+Inicio: Fagaras
+Objetivo: Bucharest
+
+Nivel	Costo	Visitados	Camino
+0	0		Fag «
+
+1	99	Fag	Fag -> Sib «
+	211		Fag -> Buc
+
+2	179	Sib	Fag -> Sib -> Rim «
+	211		Fag -> Buc
+	250		Fag -> Sib -> Ora
+	239		Fag -> Sib -> Ara
+
+3	211	Rim	Fag -> Buc «
+	239		Fag -> Sib -> Ara
+	250		Fag -> Sib -> Ora
+	325		Fag -> Sib -> Rim -> Cra
+	276		Fag -> Sib -> Rim -> Pit
+
+
+
+Ruta: ['Fagaras', 'Bucharest']
+
+Costo: 211
