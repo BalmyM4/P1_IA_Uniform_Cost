@@ -1,0 +1,57 @@
+Resultado del algoritmo Uniform Cost Search:
+
+Inicio: Giurgiu
+Objetivo: Craiova
+
+Nivel	Costo	Visitados	Camino
+0	0		Giu «
+
+1	90	Giu	Giu -> Buc «
+
+2	175	Buc	Giu -> Buc -> Urz «
+	301		Giu -> Buc -> Fag
+	191		Giu -> Buc -> Pit
+
+3	191	Urz	Giu -> Buc -> Pit «
+	301		Giu -> Buc -> Fag
+	273		Giu -> Buc -> Urz -> Hir
+	317		Giu -> Buc -> Urz -> Vas
+
+4	273	Pit	Giu -> Buc -> Urz -> Hir «
+	288		Giu -> Buc -> Pit -> Rim
+	317		Giu -> Buc -> Urz -> Vas
+	329		Giu -> Buc -> Pit -> Cra
+	301		Giu -> Buc -> Fag
+
+5	288	Hir	Giu -> Buc -> Pit -> Rim «
+	301		Giu -> Buc -> Fag
+	317		Giu -> Buc -> Urz -> Vas
+	329		Giu -> Buc -> Pit -> Cra
+	359		Giu -> Buc -> Urz -> Hir -> Efo
+
+6	301	Rim	Giu -> Buc -> Fag «
+	329		Giu -> Buc -> Pit -> Cra
+	317		Giu -> Buc -> Urz -> Vas
+	359		Giu -> Buc -> Urz -> Hir -> Efo
+	434		Giu -> Buc -> Pit -> Rim -> Cra
+	368		Giu -> Buc -> Pit -> Rim -> Sib
+
+7	317	Fag	Giu -> Buc -> Urz -> Vas «
+	329		Giu -> Buc -> Pit -> Cra
+	368		Giu -> Buc -> Pit -> Rim -> Sib
+	359		Giu -> Buc -> Urz -> Hir -> Efo
+	434		Giu -> Buc -> Pit -> Rim -> Cra
+	400		Giu -> Buc -> Fag -> Sib
+
+8	329	Vas	Giu -> Buc -> Pit -> Cra «
+	359		Giu -> Buc -> Urz -> Hir -> Efo
+	368		Giu -> Buc -> Pit -> Rim -> Sib
+	400		Giu -> Buc -> Fag -> Sib
+	434		Giu -> Buc -> Pit -> Rim -> Cra
+	409		Giu -> Buc -> Urz -> Vas -> Ias
+
+
+
+Ruta: ['Giurgiu', 'Bucharest', 'Pitesti', 'Craiova']
+
+Costo: 329

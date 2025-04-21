@@ -1,0 +1,54 @@
+Resultado del algoritmo Uniform Cost Search:
+
+Inicio: Dobreta
+Objetivo: Bucharest
+
+Nivel	Costo	Visitados	Camino
+0	0		Dob «
+
+1	75	Dob	Dob -> Meh «
+	120		Dob -> Cra
+
+2	120	Meh	Dob -> Cra «
+	145		Dob -> Meh -> Lug
+
+3	145	Cra	Dob -> Meh -> Lug «
+	258		Dob -> Cra -> Pit
+	266		Dob -> Cra -> Rim
+
+4	256	Lug	Dob -> Meh -> Lug -> Tim «
+	266		Dob -> Cra -> Rim
+	258		Dob -> Cra -> Pit
+
+5	258	Tim	Dob -> Cra -> Pit «
+	266		Dob -> Cra -> Rim
+	374		Dob -> Meh -> Lug -> Tim -> Ara
+
+6	266	Pit	Dob -> Cra -> Rim «
+	355		Dob -> Cra -> Pit -> Rim
+	359		Dob -> Cra -> Pit -> Buc
+	374		Dob -> Meh -> Lug -> Tim -> Ara
+
+7	346	Rim	Dob -> Cra -> Rim -> Sib «
+	355		Dob -> Cra -> Pit -> Rim
+	359		Dob -> Cra -> Pit -> Buc
+	374		Dob -> Meh -> Lug -> Tim -> Ara
+
+8	355	Sib	Dob -> Cra -> Pit -> Rim «
+	374		Dob -> Meh -> Lug -> Tim -> Ara
+	359		Dob -> Cra -> Pit -> Buc
+	486		Dob -> Cra -> Rim -> Sib -> Ara
+	445		Dob -> Cra -> Rim -> Sib -> Fag
+	497		Dob -> Cra -> Rim -> Sib -> Ora
+
+8	359	Rim	Dob -> Cra -> Pit -> Buc «
+	374		Dob -> Meh -> Lug -> Tim -> Ara
+	497		Dob -> Cra -> Rim -> Sib -> Ora
+	486		Dob -> Cra -> Rim -> Sib -> Ara
+	445		Dob -> Cra -> Rim -> Sib -> Fag
+
+
+
+Ruta: ['Dobreta', 'Craiova', 'Pitesti', 'Bucharest']
+
+Costo: 359

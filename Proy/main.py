@@ -83,7 +83,7 @@ class DialogoFinal(QDialog):
         super().__init__(parent)
         self.setWindowTitle("Selección de nodo objetivo")
         self.setModal(True)  # Hacer el diálogo modal
-        self.setWindowIcon(QIcon(absPath("recursos\\salida.png")))
+        self.setWindowIcon(QIcon(absPath("recursos\\meta.png")))
         self.setFixedSize(240, 120)
         
         self.objetivo = None
