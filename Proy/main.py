@@ -140,6 +140,7 @@ class MainWindow(QMainWindow):
     net = None
     
     inicio_o_final = 0
+    reiniciar = 0
     
     def __init__(self):
         super().__init__()
@@ -147,7 +148,7 @@ class MainWindow(QMainWindow):
         self.inicio_o_final = 0
         
         # Para el tamaño inicial de la ventana
-        self.setGeometry(100, 100, 800, 600)
+        self.setGeometry(100, 100, 1150, 600)
         
         self.setStyleSheet("background-color: #21262c;")
 
@@ -187,6 +188,9 @@ class MainWindow(QMainWindow):
         dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea | Qt.TopDockWidgetArea | Qt.BottomDockWidgetArea)
         dock.setFeatures(QDockWidget.DockWidgetMovable | QDockWidget.DockWidgetFloatable)
         
+        # Agrandar
+        dock.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        dock.setFixedWidth(500)
 
         # Crear el cuadro de texto
         self.text_edit = QTextEdit()
@@ -275,6 +279,14 @@ class MainWindow(QMainWindow):
         # Mostrar el nombre del nodo clicado en la barra de estado
         nombre = self.labels[index].toPlainText()
         
+        if self.reiniciar == 1:
+            
+            # Limpiamos ruta:
+            self.limpiar_ruta()
+            
+            self.reiniciar = 0
+        
+        # Cambiar el color del nodo clicado
         if self.inicio_o_final == 0:
             self.cambiar_color_nodo(self.inicio, (0, 122, 255))  # Regresar el color del nodo de inicio anterior
             self.inicio = nombre
@@ -290,7 +302,7 @@ class MainWindow(QMainWindow):
             self.statusBar().showMessage(f"Nodo objetivo seleccionado: {self.objetivo}")
             self.info_label.setText(f"Inicio: {self.inicio if self.inicio else 'Ninguno'}  |  Objetivo: {self.objetivo}")
             self.cambiar_color_nodo(self.objetivo, '#c40e56')  # Cambiar el color del nodo objetivo
-        
+          
 
     def actualizar_area_grafo( self ):
         
@@ -418,12 +430,14 @@ class MainWindow(QMainWindow):
         # Ejecutar Uniform Cost Search
         ejecutar_action = QAction(QIcon(absPath("recursos\\ejecutar.png")), "&Ejecutar", self)
         ejecutar_action.setStatusTip("Ejecutar Uniform Cost Search")
+        ejecutar_action.setShortcut("Ctrl+Return")
         ejecutar_action.triggered.connect(self.ejecutar_uniform_cost_search)
         tool_bar.addAction(ejecutar_action)
         
         # Limpiar grafo
         limpiar_action = QAction(QIcon(absPath("recursos\\limpiar.png")), "&Limpiar", self)
         limpiar_action.setStatusTip("Limpiar ruta del grafo")
+        limpiar_action.setShortcut("Ctrl+L")
         limpiar_action.triggered.connect(self.limpiar_ruta)
         tool_bar.addAction(limpiar_action)
     
@@ -477,6 +491,16 @@ class MainWindow(QMainWindow):
         
     def seleccionar_inicio(self):
         if self.grafo:
+            
+            if self.reiniciar == 1:
+            
+                # Limpiamos ruta:
+                self.limpiar_ruta()
+                
+                self.inicio_o_final = 1
+                self.reiniciar = 0
+            
+            # Obtenemos el nodo de inicio
             dialogo = DialogoInicio(self, grafo=self.grafo)
             if dialogo.exec() == QDialog.Accepted:
                 self.cambiar_color_nodo(self.inicio, (0, 122, 255))  # Regresar el color del nodo de inicio anterior
@@ -490,6 +514,15 @@ class MainWindow(QMainWindow):
     
     def seleccionar_objetivo(self):
         if self.grafo:
+            
+            if self.reiniciar == 1:
+            
+                # Limpiamos ruta:
+                self.limpiar_ruta()
+                
+                self.reiniciar = 0
+            
+            # Obtenemos el nodo objetivo
             dialogo = DialogoFinal(self, grafo=self.grafo)
             if dialogo.exec() == QDialog.Accepted:
                 self.cambiar_color_nodo(self.objetivo, (0, 122, 255))  # Regresar el color del nodo de inicio anterior
@@ -580,6 +613,21 @@ class MainWindow(QMainWindow):
                     symbolPen='w'
                 )
             
+            # Limpiar el cuadro de texto
+            self.text_edit.clear()
+            self.text_edit.setPlaceholderText("Aquí se mostrará el método paso a paso... Ejecuta el algoritmo para ver los resultados.")
+            
+            # Limpiar los nodos de inicio y objetivo
+            self.inicio = None
+            self.objetivo = None
+            self.inicio_o_final = 0
+            
+            # Actualizar la etiqueta de estado
+            self.info_label.setText("Inicio: Ninguno  |  Objetivo: Ninguno")
+            
+            # Limpiar la barra de estado
+            self.statusBar().showMessage("Ruta limpiada. Selecciona nuevos nodos de inicio y objetivo.")
+            
         
     def ejecutar_uniform_cost_search(self):
         
@@ -600,6 +648,8 @@ class MainWindow(QMainWindow):
             self.text_edit.append(f"\nCosto: {costo}")
             
             self.pintar_ruta(camino)
+            
+            self.reiniciar = 1
 
 
 # Ejecutar Uniform Cost Search y mostrar el resultado
