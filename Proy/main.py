@@ -187,10 +187,7 @@ class MainWindow(QMainWindow):
         dock = QDockWidget("Método paso a paso", self)
         dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea | Qt.TopDockWidgetArea | Qt.BottomDockWidgetArea)
         dock.setFeatures(QDockWidget.DockWidgetMovable | QDockWidget.DockWidgetFloatable)
-        
-        # Agrandar
-        dock.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        dock.setFixedWidth(500)
+
 
         # Crear el cuadro de texto
         self.text_edit = QTextEdit()
