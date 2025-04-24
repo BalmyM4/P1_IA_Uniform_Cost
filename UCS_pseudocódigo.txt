@@ -1,0 +1,28 @@
+function UnSiorm_Cost_Search( grafo, inico, objetivo )
+    
+    cola ← [ datos ]
+
+    visitados ← [ ]
+
+    Mientras colaVacia(cola) != True hacer
+
+        cola  ← ordenarCola( cola )
+
+        datos ← sacar( cola )
+
+        Si datos[actual] == objetivo Entonces
+            return resultado
+
+        Si visitado( datos[actual] ) != True Entonces
+
+            agregar( visitado( datos[actual] ) )
+
+            Para cada nodo en vecinos( datos[actual] ) hacer
+            
+                Si visitado( nodo ) != True Entonces
+
+                    peso = obtenerPeso( datos[actual], nodo )
+
+                    agregar( cola, [ datos[peso_acumulado] + peso, nodo, agregar(datos[camino], [nodo]) ] )
+
+    return error

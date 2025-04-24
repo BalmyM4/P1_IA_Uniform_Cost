@@ -5,7 +5,7 @@ from logica.printPQtGrpah import crearGraph
 
 import sys, os
 from pathlib import Path
-
+import webbrowser
 
 # Rutas absolutas para los archivos de recursos
 def absPath(file):
@@ -572,7 +572,7 @@ class MainWindow(QMainWindow):
     
     
     def mostrar_acerca_de(self):
-        pass
+        webbrowser.open('https://github.com/BalmyM4/P1_IA_Uniform_Cost')
     
     
     def pintar_ruta(self, ruta):
